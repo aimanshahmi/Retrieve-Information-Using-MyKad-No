@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <script>
+            function getInformation(){
+                var nokp=document.getElementById("nokp").value;
+                var year=nokp.substring(0,2);
+                var month=nokp.substring(2,4);
+                var day=nokp.substring(4,6);
+                day++;
+                
+                document.getElementById("birthdate").valueAsDate = new Date(year+"-"+month+"-"+day);
+                
+                var gender=nokp.substring(11,12)
+                if (gender%2==0) {
+                    gender="Perempuan";
+    
+                }
+                else{
+                    gender="Lelaki";
+                }
+                
+                document.getElementById("gender").value=gender;
+                var tarikh= document.getElementById("birthdate").value;
+                var tahun=new Date(""+tarikh+"");
+                var sekarang=new Date();
+                document.getElementById("umur").value=(sekarang.getYear()-tahun.getYear());
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Extract Information From Identification MYKAD Using Javascript</h1>
+        <form>
+            <label>No Kad Pengenalan</label>
+            <input type="text" name="nokp" id="nokp" onkeyup="getInformation()">
+            <label>Tarikh Lahir</label>
+            <input type="date" name="date" id="birthdate" readonly>
+            <label>Jantina</label>
+            <input type="text" name="gender" id="gender" readonly>
+            <label>Umur</label>
+            <input type="number" name="umur" id="umur" readonly>
+            
+        </form>
+    </body>
+</html>
